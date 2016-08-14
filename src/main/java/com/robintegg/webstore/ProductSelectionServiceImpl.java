@@ -1,13 +1,14 @@
-package com.robintegg.selection;
+package com.robintegg.webstore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.robintegg.catalogue.Catalogue;
-import com.robintegg.catalogue.CatalogueService;
-import com.robintegg.customer.CustomerID;
-import com.robintegg.location.CustomerLocationService;
-import com.robintegg.location.Location;
+import com.robintegg.account.CustomerID;
+import com.robintegg.account.CustomerLocationService;
+import com.robintegg.account.UnknownCustomerException;
+import com.robintegg.common.Location;
+import com.robintegg.sales.Catalogue;
+import com.robintegg.sales.CatalogueService;
 
 @Service
 public class ProductSelectionServiceImpl implements ProductSelectionService {
@@ -22,7 +23,7 @@ public class ProductSelectionServiceImpl implements ProductSelectionService {
 	}
 
 	@Override
-	public Catalogue getAvailableProductsCatalogue(CustomerID customerID) {
+	public Catalogue getAvailableProductsCatalogue(CustomerID customerID) throws UnknownCustomerException {
 
 		Location location = locationService.getLocationForCustomer(customerID);
 

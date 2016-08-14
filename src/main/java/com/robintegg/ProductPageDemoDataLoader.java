@@ -5,13 +5,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.robintegg.catalogue.Category;
-import com.robintegg.catalogue.Product;
-import com.robintegg.catalogue.ProductRepository;
-import com.robintegg.customer.Customer;
-import com.robintegg.customer.CustomerID;
-import com.robintegg.customer.CustomerRepository;
-import com.robintegg.location.Location;
+import com.robintegg.account.Customer;
+import com.robintegg.account.CustomerID;
+import com.robintegg.account.CustomerRepository;
+import com.robintegg.common.Location;
+import com.robintegg.sales.Category;
+import com.robintegg.sales.Product;
+import com.robintegg.sales.ProductRepository;
 
 @Component
 public class ProductPageDemoDataLoader implements ApplicationRunner {

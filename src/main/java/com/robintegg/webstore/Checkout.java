@@ -1,4 +1,4 @@
-package com.robintegg.checkout;
+package com.robintegg.webstore;
 
 import java.util.Collection;
 
@@ -6,7 +6,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-import com.robintegg.customer.CustomerID;
+import com.robintegg.account.CustomerID;
 
 @Entity
 public class Checkout {

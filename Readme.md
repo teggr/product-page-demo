@@ -1,9 +1,16 @@
 # Product Selection Page Demo
 
+## Technical Choices
+
+* Spring Boot for main Java application to provide web endpoints and data persistence
+* JQuery and Mustache to provide lightweight dynamic content to products page
+* Twitter Bootstrap for responsive grid and CSS framework
+
 ## Registered Customers for customerID cookie values
 
-* Robin - LONDON
-* Dan - LIVERPOOL
+* robin - LONDON
+* dan - LIVERPOOL
+* dave - unknown customer
 
 See below for setting cookie manually
 
@@ -30,3 +37,5 @@ Open browser on http://localhost:8080
 You can go to the Developer Tools (Ctrl-Shift-J or Tools -> Developer Tools) -> Console and the you can enter javascript command:
 
 	document.cookie="customerID=robin"
+	
+Refresh the page

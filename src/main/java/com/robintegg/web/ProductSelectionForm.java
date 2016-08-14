@@ -3,7 +3,7 @@ package com.robintegg.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.robintegg.checkout.Checkout;
+import com.robintegg.webstore.Checkout;
 
 public class ProductSelectionForm {
 

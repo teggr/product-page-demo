@@ -1,4 +1,4 @@
-package com.robintegg.location;
+package com.robintegg.common;
 
 import javax.persistence.Embeddable;
 

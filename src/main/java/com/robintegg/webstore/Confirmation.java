@@ -1,10 +1,10 @@
-package com.robintegg.checkout;
+package com.robintegg.webstore;
 
 import java.util.Collection;
 
-import com.robintegg.catalogue.Product;
-import com.robintegg.catalogue.ProductRepository;
-import com.robintegg.customer.CustomerID;
+import com.robintegg.account.CustomerID;
+import com.robintegg.sales.Product;
+import com.robintegg.sales.ProductRepository;
 
 public class Confirmation {
 

@@ -1,4 +1,4 @@
-package com.robintegg.customer;
+package com.robintegg.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

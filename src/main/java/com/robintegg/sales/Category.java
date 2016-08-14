@@ -1,4 +1,4 @@
-package com.robintegg.catalogue;
+package com.robintegg.sales;
 
 public enum Category {
 	SPORTS("category.sports"), NEWS("category.news");

@@ -1,11 +1,11 @@
-package com.robintegg.catalogue;
+package com.robintegg.sales;
 
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.robintegg.location.Location;
+import com.robintegg.common.Location;
 
 @Service
 public class CatalogueServiceImpl implements CatalogueService {

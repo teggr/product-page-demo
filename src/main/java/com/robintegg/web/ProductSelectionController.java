@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.robintegg.checkout.Checkout;
-import com.robintegg.checkout.CheckoutService;
-import com.robintegg.selection.ProductSelectionService;
+import com.robintegg.account.UnknownCustomerException;
+import com.robintegg.webstore.Checkout;
+import com.robintegg.webstore.CheckoutService;
+import com.robintegg.webstore.ProductSelectionService;
 
 @Controller
 @RequestMapping("/")
@@ -33,12 +34,12 @@ public class ProductSelectionController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getProductSelection(@CookieValue(name = "customerID", required = false) String customerIDCookie,
-			Model model) throws NoCustomerIDCookieException {
+			Model model) throws NoCustomerIDCookieException, UnknownCustomerException {
 
 		CustomerIDCookie cookie = new CustomerIDCookie(customerIDCookie);
 
 		Checkout existingCheckout = checkout.getCheckout(cookie.getCustomerID());
-		if (existingCheckout != null) {
+		if (customerHasExistingCheckout(existingCheckout)) {
 			model.addAttribute("form", new ProductSelectionForm(existingCheckout));
 		} else {
 			model.addAttribute("form", new ProductSelectionForm());
@@ -49,10 +50,14 @@ public class ProductSelectionController {
 		return "productselection";
 	}
 
+	private boolean customerHasExistingCheckout(Checkout existingCheckout) {
+		return existingCheckout != null;
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String selectProducts(@CookieValue(name = "customerID", required = false) String customerIDCookie,
 			Model model, @ModelAttribute("form") ProductSelectionForm form, BindingResult result)
-			throws NoCustomerIDCookieException {
+			throws NoCustomerIDCookieException, UnknownCustomerException {
 
 		CustomerIDCookie cookie = new CustomerIDCookie(customerIDCookie);
 

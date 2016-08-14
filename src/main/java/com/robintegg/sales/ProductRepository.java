@@ -1,10 +1,10 @@
-package com.robintegg.catalogue;
+package com.robintegg.sales;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.robintegg.location.Location;
+import com.robintegg.common.Location;
 
 public interface ProductRepository extends JpaRepository<Product, String> {
 

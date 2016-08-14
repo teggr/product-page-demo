@@ -15,10 +15,9 @@
 
 				<div class="col-md-4">
 					<div class="well">
-						<h1
-							th:text="#{${T(com.robintegg.catalogue.Category).SPORTS.title}}"></h1>
+						<h1 th:text="#{${T(com.robintegg.sales.Category).SPORTS.title}}"></h1>
 						<th:block
-							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).SPORTS)}">
+							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.sales.Category).SPORTS)}">
 							<div th:replace="product::selection-list (product=${product})"></div>
 						</th:block>
 					</div>
@@ -26,9 +25,9 @@
 
 				<div class="col-md-4">
 					<div class="well">
-						<h1 th:text="#{${T(com.robintegg.catalogue.Category).NEWS.title}}"></h1>
+						<h1 th:text="#{${T(com.robintegg.sales.Category).NEWS.title}}"></h1>
 						<th:block
-							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).NEWS)}">
+							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.sales.Category).NEWS)}">
 							<div th:replace="product::selection-list (product=${product})"></div>
 						</th:block>
 					</div>
@@ -109,7 +108,7 @@
 						toggleBasketItem($productSelector, this.checked);
 						toggleSubmitButton();
 					});
-					
+
 					$('.product-selector:checked').each(function() {
 						var $productSelector = $(this);
 						toggleBasketItem($productSelector, this.checked);

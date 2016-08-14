@@ -1,4 +1,4 @@
-package com.robintegg.customer;
+package com.robintegg.account;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package com.robintegg.web;
 
-import com.robintegg.customer.CustomerID;
+import com.robintegg.account.CustomerID;
 
 public class CustomerIDCookie {
 

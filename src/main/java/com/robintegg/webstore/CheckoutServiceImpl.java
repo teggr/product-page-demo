@@ -1,10 +1,10 @@
-package com.robintegg.checkout;
+package com.robintegg.webstore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.robintegg.catalogue.ProductRepository;
-import com.robintegg.customer.CustomerID;
+import com.robintegg.account.CustomerID;
+import com.robintegg.sales.ProductRepository;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
@@ -20,7 +20,8 @@ public class CheckoutServiceImpl implements CheckoutService {
 	}
 
 	@Override
-	public Confirmation getConfirmation(CustomerID customerID) {
+	public Confirmation getConfirmation(CustomerID customerID) throws NoCurrentCheckoutException {
+		checkForCheckout(customerID);
 		Checkout checkout = checkoutRepository.getOne(customerID);
 		return new Confirmation(checkout, productRepository);
 	}
@@ -34,13 +35,20 @@ public class CheckoutServiceImpl implements CheckoutService {
 	}
 
 	@Override
-	public void cancelCheckout(CustomerID customerID) {
+	public void cancelCheckout(CustomerID customerID) throws NoCurrentCheckoutException {
+		checkForCheckout(customerID);
 		checkoutRepository.delete(customerID);
 	}
 
 	@Override
 	public Checkout getCheckout(CustomerID customerID) {
 		return checkoutRepository.findOne(customerID);
+	}
+
+	private void checkForCheckout(CustomerID customerID) throws NoCurrentCheckoutException {
+		if (!checkoutRepository.exists(customerID)) {
+			throw new NoCurrentCheckoutException();
+		}
 	}
 
 }

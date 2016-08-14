@@ -1,10 +1,10 @@
-package com.robintegg.catalogue;
+package com.robintegg.sales;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.robintegg.location.Location;
+import com.robintegg.common.Location;
 
 @Entity
 public class Product {

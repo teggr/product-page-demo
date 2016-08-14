@@ -1,10 +1,10 @@
-package com.robintegg.customer;
+package com.robintegg.account;
 
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-import com.robintegg.location.Location;
+import com.robintegg.common.Location;
 
 @Entity
 public class Customer {

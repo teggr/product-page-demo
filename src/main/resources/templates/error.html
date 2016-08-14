@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head::standard (title=#{product.selection.title})">
+</head>
+<body>
+
+	<div class="container">
+
+		<th:block th:replace="header::standard"></th:block>
+
+		<div class="row">
+
+			<h1 th:text="#{product.selection.error.title}"></h1>
+			
+			<p th:text="#{${message}}"></p>
+
+		</div>
+
+	</div>
+
+	<!-- javaqscript -->
+	<th:block th:include="scripts::standard"></th:block>
+
+</body>
+</html>
