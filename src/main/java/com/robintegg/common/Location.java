@@ -14,6 +14,9 @@ public class Location {
 	}
 
 	public Location(String locationID) {
+		if (locationID == null) {
+			throw new IllegalArgumentException("must define a location id");
+		}
 		this.locationID = locationID;
 	}
 

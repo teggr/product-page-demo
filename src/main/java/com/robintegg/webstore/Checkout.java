@@ -13,17 +13,19 @@ public class Checkout {
 
 	@ElementCollection
 	private Collection<String> productIDs;
-	private boolean confirmed = false;
 
 	@EmbeddedId
 	private CustomerID customerID;
 
 	public Checkout(CustomerID customerID, Collection<String> productIDs) {
-		this.customerID = customerID;
-		this.productIDs = productIDs;
+		if (customerID == null) {
+			throw new IllegalArgumentException("a customer is required for a check out");
+		}
 		if (productIDs.isEmpty()) {
 			throw new IllegalArgumentException("Can't checkout an empty basket");
 		}
+		this.customerID = customerID;
+		this.productIDs = productIDs;
 	}
 
 	Checkout() {
@@ -37,7 +39,4 @@ public class Checkout {
 		return customerID;
 	}
 
-	public boolean isConfirmed() {
-		return confirmed;
-	}
 }

@@ -15,13 +15,14 @@ public class Customer {
 	@Embedded
 	private Location homeLocation;
 
+	public Customer(CustomerID customerID) {
+		this(customerID, null);
+	}
+
 	public Customer(CustomerID customerID, Location homeLocation) {
 		super();
 		if (customerID == null) {
 			throw new IllegalArgumentException("Must have a customerID");
-		}
-		if (homeLocation == null) {
-			throw new IllegalArgumentException("Must have a homeLocation");
 		}
 		this.customerID = customerID;
 		this.homeLocation = homeLocation;

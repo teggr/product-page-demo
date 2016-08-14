@@ -42,6 +42,7 @@ public class ProductPageDemoDataLoader implements ApplicationRunner {
 		// load customers
 		this.customerRepository.save(new Customer(new CustomerID("robin"), LONDON));
 		this.customerRepository.save(new Customer(new CustomerID("dan"), LIVERPOOL));
+		this.customerRepository.save(new Customer(new CustomerID("alex")));
 
 	}
 

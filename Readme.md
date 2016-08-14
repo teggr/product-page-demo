@@ -12,6 +12,7 @@
 * robin - LONDON
 * dan - LIVERPOOL
 * dave - unknown customer
+* alex - customer with no location
 
 See below for setting cookie manually
 

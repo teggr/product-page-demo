@@ -25,10 +25,8 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+
+		<!-- spring boot starters -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -37,37 +35,49 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- server side rendering template engine -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!-- spring data jpa and database -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- test libraries -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- bdd testing -->
 		<dependency>
-			<groupId>org.springframework.restdocs</groupId>
-			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>4.0.4</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- serenity bdd testing -->
 		<dependency>
-			<groupId>net.serenity-bdd</groupId>
-			<artifactId>serenity-core</artifactId>
-			<version>1.1.1</version>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-spring</artifactId>
+			<version>4.0.4</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>net.serenity-bdd</groupId>
-			<artifactId>serenity-junit</artifactId>
-			<version>1.1.1</version>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-gherkin</artifactId>
+			<version>4.0.4</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- java web driver impl -->
