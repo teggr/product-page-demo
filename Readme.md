@@ -5,6 +5,7 @@
 * Spring Boot for main Java application to provide web endpoints and data persistence
 * JQuery and Mustache to provide lightweight dynamic content to products page
 * Twitter Bootstrap for responsive grid and CSS framework
+* BDD application
 
 ## Registered Customers for customerID cookie values
 
@@ -16,15 +17,23 @@ See below for setting cookie manually
 
 ## Running the application
 
+### Requirements
+
+* Java 8
+
+### Github
+
+Clone a copy of this repository
+
 ### Using Maven
+
+From the project root directory
 
 	mvn spring-boot:run
 
-or 
+or if you don't have maven installed use the packaged maven command (windows ./mvnw.cmd, linux ./mvnw)
 
-	mvn clean package
-	cd target
-	java -jar product-page.jar
+	mvnw.cmd spring-boot:run
 
 ### Opening the product page
 
@@ -39,3 +48,9 @@ You can go to the Developer Tools (Ctrl-Shift-J or Tools -> Developer Tools) -> 
 	document.cookie="customerID=robin"
 	
 Refresh the page
+
+## Testing results
+
+During the test phase, the BDD framework will have captured the acceptance criteria report. This will be available at:
+
+	{project_root}/target/jbehave/view/index.html
