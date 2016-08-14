@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+	<div th:fragment="selection-list (product)">
+		<div class="checkbox">
+			<label th:inline="text"> 
+				<input type="checkbox" class="product-selector" th:attr="data-productid=${product.getProductID()},data-name=${product.getName()}" th:name="'selections['  + ${product.productID}  + ']'" th:value="${product.productID}" th:checked="${form.isSelected(product.productID)}"></input> [[${product.name}]]
+			</label>
+		</div>
+	</div>
+	
+	<div th:fragment="confirm (product)">
+		<div th:inline="text"> 
+			[[${product.name}]]
+		</div>
+	</div>
+	
+	<div th:fragment="basket-template">
+		<script id="product-basket-template" type="x-tmpl-mustache">
+			<li data-productid="{{productid}}">{{name}}</li>
+		</script>
+	</div>
+	
+</body>
+</html>

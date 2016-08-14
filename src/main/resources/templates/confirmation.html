@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head::standard (title=#{product.selection.title})">
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-8">
+
+				<ul>
+					<li th:each="product : ${checkout.getProducts()}">
+						<div th:replace="product::confirm (product=${product})"></div>
+					</li>
+				</ul>
+
+			</div>
+
+			<div class="col-md-4">
+
+				<nav role="navigation">
+					<form th:action="@{/confirmation}" method="post">
+
+						<div class="form-group">
+							<a class="btn btn-default" th:href="@{/}"
+								th:text="#{confirmation.back}"></a> <input
+								class="btn btn-warning" type="submit"
+								th:value="#{confirmation.cancel}"></input>
+						</div>
+
+					</form>
+				</nav>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<th:block th:include="scripts::standard"></th:block>
+
+</body>
+</html>
