@@ -6,33 +6,47 @@
 <body>
 
 	<div class="container">
+	
+		<th:block th:replace="header::standard"></th:block>
 
 		<div class="row">
 
 			<div class="col-md-8">
+				
+				<div class="well">
 
-				<ul>
-					<li th:each="product : ${checkout.getProducts()}">
-						<div th:replace="product::confirm (product=${product})"></div>
-					</li>
-				</ul>
+					<h1 th:text="#{confirmation.products}"></h1>
+
+					<ul>
+						<li th:each="product : ${checkout.getProducts()}">
+							<div th:replace="product::confirm (product=${product})"></div>
+						</li>
+					</ul>
+				
+				</div>
 
 			</div>
 
 			<div class="col-md-4">
+			
+				<div class="well">
+					
+					<h1 th:text="#{confirmation.confirm}"></h1>
 
-				<nav role="navigation">
-					<form th:action="@{/confirmation}" method="post">
-
-						<div class="form-group">
-							<a class="btn btn-default" th:href="@{/}"
-								th:text="#{confirmation.back}"></a> <input
-								class="btn btn-warning" type="submit"
-								th:value="#{confirmation.cancel}"></input>
-						</div>
-
-					</form>
-				</nav>
+					<nav role="navigation">
+						<form th:action="@{/confirmation}" method="post">
+	
+							<div class="form-group">
+								<a class="btn btn-default" th:href="@{/}"
+									th:text="#{confirmation.back}"></a> <input
+									class="btn btn-warning" type="submit"
+									th:value="#{confirmation.cancel}"></input>
+							</div>
+	
+						</form>
+					</nav>
+				
+				</div>
 
 			</div>
 

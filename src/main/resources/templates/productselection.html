@@ -6,93 +6,117 @@
 <body>
 
 	<div class="container">
-	
+
+		<th:block th:replace="header::standard"></th:block>
+
 		<div class="row">
-		
+
 			<form th:object="${form}" th:action="@{/}" method="post">
-		
+
 				<div class="col-md-4">
-					<th:block th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).SPORTS)}">
-						<div th:replace="product::selection-list (product=${product})"></div>
-					</th:block>
+					<div class="well">
+						<h1
+							th:text="#{${T(com.robintegg.catalogue.Category).SPORTS.title}}"></h1>
+						<th:block
+							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).SPORTS)}">
+							<div th:replace="product::selection-list (product=${product})"></div>
+						</th:block>
+					</div>
 				</div>
-				
+
 				<div class="col-md-4">
-					<th:block th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).NEWS)}">
-						<div th:replace="product::selection-list (product=${product})"></div>
-					</th:block>
+					<div class="well">
+						<h1 th:text="#{${T(com.robintegg.catalogue.Category).NEWS.title}}"></h1>
+						<th:block
+							th:each="product : ${catalogue.getProductsBy(T(com.robintegg.catalogue.Category).NEWS)}">
+							<div th:replace="product::selection-list (product=${product})"></div>
+						</th:block>
+					</div>
 				</div>
-				
+
 				<div class="col-md-4">
-				
-					<!-- basket -->
-					<ul id="basket">
-					</ul>
-					
-				<input id="submit" class="btn btn-default" type="submit" style="display: none;" ></input>
-				
+					<div class="well">
+						<h1 th:text="#{product.selection.basket}"></h1>
+						<!-- basket -->
+						<ul id="basket">
+
+						</ul>
+					</div>
+
+					<input id="submit" class="btn btn-default" type="submit"
+						style="display: none;"></input>
+
+
 				</div>
-			
+
 			</form>
-		
+
 		</div>
-	
+
 	</div>
-	
+
 	<!-- templates -->
 	<th:block th:include="product::basket-template"></th:block>
-	
+
 	<!-- javaqscript -->
 	<th:block th:include="scripts::standard"></th:block>
 	<th:block th:include="scripts::templates"></th:block>
-	
+
 	<script type="text/javascript">
-	
-		$(document).ready(function(){
-			
-			var $basket = $("#basket");
-			var template = $('#product-basket-template').html();
-			Mustache.parse(template);   // optional, speeds up future uses
-			var $submit = $('#submit');
-			
-			var toggleSubmitButton = function(  ) {
-				
-				var entries = $basket.find("[data-productid]").length;
-				if( entries == 0 ) {
-					$submit.hide();
-				} else {
-					$submit.show();
-				}
-				
-			}
-			
-			var toggleBasketItem = function( productSelector, checked ) {
-				
-				var productid = productSelector.data("productid");
-				var name = productSelector.data("name");
-			
-				if(checked) {
-					var view = {
-					  productid: productid,
-					  name: name
-					};
-					  var rendered = Mustache.render(template, view);
-					  $basket.append($(rendered));
-				} else {
-					$basket.find("[data-productid='" + productid + "']").remove();
-				}
-				
-			}
+		$(document).ready(
+				function() {
 
-		   // on state change, add remove the entries from the list
-		   $('.product-selector').change(function() {
-			   var $productSelector = $(this);
-			   toggleBasketItem( $productSelector, this.checked );
-			   toggleSubmitButton();
-			});
+					var $basket = $("#basket");
+					var template = $('#product-basket-template').html();
+					Mustache.parse(template); // optional, speeds up future uses
+					var $submit = $('#submit');
 
-		});
-	
+					var toggleSubmitButton = function() {
+
+						var entries = $basket.find("[data-productid]").length;
+						if (entries == 0) {
+							$submit.hide();
+						} else {
+							$submit.show();
+						}
+
+					}
+
+					var toggleBasketItem = function(productSelector, checked) {
+
+						var productid = productSelector.data("productid");
+						var name = productSelector.data("name");
+
+						if (checked) {
+							var view = {
+								productid : productid,
+								name : name
+							};
+							var rendered = Mustache.render(template, view);
+							$basket.append($(rendered));
+						} else {
+							$basket
+									.find(
+											"[data-productid='" + productid
+													+ "']").remove();
+						}
+
+					}
+
+					// on state change, add remove the entries from the list
+					$('.product-selector').change(function() {
+						var $productSelector = $(this);
+						toggleBasketItem($productSelector, this.checked);
+						toggleSubmitButton();
+					});
+					
+					$('.product-selector:checked').each(function() {
+						var $productSelector = $(this);
+						toggleBasketItem($productSelector, this.checked);
+					});
+					toggleSubmitButton();
+
+				});
 	</script>
 
 </body>

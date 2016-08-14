@@ -27,6 +27,10 @@ public class ProductSelectionForm {
 		return selections.containsKey(productID);
 	}
 
+	public boolean hasNoSelections() {
+		return selections.isEmpty();
+	}
+
 	@Override
 	public String toString() {
 		return "ProductSelectionForm [selections=" + selections + "]";
