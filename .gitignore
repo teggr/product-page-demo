@@ -52,3 +52,4 @@ Temporary Items
 target/
 .mvn/
 bin/
+derby.log
