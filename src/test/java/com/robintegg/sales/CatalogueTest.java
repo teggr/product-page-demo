@@ -10,17 +10,15 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-import com.robintegg.common.Location;
-
 public class CatalogueTest {
 
 	@Test
 	public void shouldReturnProductsFilteredByCategory() {
 		Collection<Product> products = new ArrayList<>();
-		products.add(new Product("a", Category.NEWS, Location.ANY_LOCATION));
-		products.add(new Product("b", Category.SPORTS, Location.ANY_LOCATION));
-		products.add(new Product("c", Category.NEWS, Location.ANY_LOCATION));
-		products.add(new Product("d", Category.SPORTS, Location.ANY_LOCATION));
+		products.add(new Product("a", Category.NEWS, SalesLocation.ANY_LOCATION));
+		products.add(new Product("b", Category.SPORTS, SalesLocation.ANY_LOCATION));
+		products.add(new Product("c", Category.NEWS, SalesLocation.ANY_LOCATION));
+		products.add(new Product("d", Category.SPORTS, SalesLocation.ANY_LOCATION));
 		Catalogue catalogue = new Catalogue(products);
 
 		Collection<Product> news = catalogue.getProductsBy(Category.NEWS);

@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.robintegg.common.Location;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class CatalogueServiceTest {
@@ -22,7 +20,7 @@ public class CatalogueServiceTest {
 	@Test
 	public void shouldReturnLocationBasedProductsThatMatchNamedLocation() {
 
-		Catalogue catalogue = service.getCatalogueForLocation(new Location("LONDON"));
+		Catalogue catalogue = service.getCatalogueForLocation(new SalesLocation("LONDON"));
 
 		Collection<Product> products = catalogue.getProducts();
 		assertEquals(4, products.size());
@@ -36,7 +34,7 @@ public class CatalogueServiceTest {
 	@Test
 	public void shouldReturnSkyProductsRegardlessOfLocation() {
 
-		Catalogue catalogue = service.getCatalogueForLocation(new Location("TIMBUKTOO"));
+		Catalogue catalogue = service.getCatalogueForLocation(new SalesLocation("TIMBUKTOO"));
 
 		Collection<Product> products = catalogue.getProducts();
 		assertEquals(2, products.size());

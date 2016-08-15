@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.robintegg.common.Location;
-
 @Transactional
 @Service
 public class CatalogueServiceImpl implements CatalogueService {
@@ -22,12 +20,12 @@ public class CatalogueServiceImpl implements CatalogueService {
 	}
 
 	@Override
-	public Catalogue getCatalogueForLocation(Location location) {
+	public Catalogue getCatalogueForLocation(SalesLocation location) {
 		return new Catalogue(productRepository.findByLocationIn(filterLocations(location)));
 	}
 
-	private List<Location> filterLocations(Location location) {
-		return Arrays.asList(location, Location.ANY_LOCATION).stream()
+	private List<SalesLocation> filterLocations(SalesLocation location) {
+		return Arrays.asList(location, SalesLocation.ANY_LOCATION).stream()
 				.filter(l -> l != null).collect(Collectors.toList());
 	}
 

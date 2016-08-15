@@ -4,8 +4,6 @@ import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-import com.robintegg.common.Location;
-
 @Entity
 public class Customer {
 
@@ -13,13 +11,13 @@ public class Customer {
 	public CustomerID customerID;
 
 	@Embedded
-	private Location homeLocation;
+	private HomeLocation homeLocation;
 
 	public Customer(CustomerID customerID) {
 		this(customerID, null);
 	}
 
-	public Customer(CustomerID customerID, Location homeLocation) {
+	public Customer(CustomerID customerID, HomeLocation homeLocation) {
 		super();
 		if (customerID == null) {
 			throw new IllegalArgumentException("Must have a customerID");
@@ -35,7 +33,7 @@ public class Customer {
 		return customerID;
 	}
 
-	public Location getHomeLocation() {
+	public HomeLocation getHomeLocation() {
 		return homeLocation;
 	}
 

@@ -1,19 +1,19 @@
-package com.robintegg.common;
+package com.robintegg.sales;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Location {
+public class SalesLocation {
 
-	public static final Location ANY_LOCATION = new Location("ALL");
+	public static final SalesLocation ANY_LOCATION = new SalesLocation("ALL");
 
 	private String locationID;
 
-	Location() {
+	SalesLocation() {
 		// for JPA
 	}
 
-	public Location(String locationID) {
+	public SalesLocation(String locationID) {
 		if (locationID == null) {
 			throw new IllegalArgumentException("must define a location id");
 		}

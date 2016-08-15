@@ -1,7 +1,5 @@
 package com.robintegg.sales;
 
-import com.robintegg.common.Location;
-
 /**
  * provides a service that offers channel subscriptions based on location
  * 
@@ -10,6 +8,6 @@ import com.robintegg.common.Location;
  */
 public interface CatalogueService {
 
-	Catalogue getCatalogueForLocation(Location location);
+	Catalogue getCatalogueForLocation(SalesLocation location);
 
 }

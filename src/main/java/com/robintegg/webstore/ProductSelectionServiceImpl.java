@@ -6,10 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.robintegg.account.CustomerID;
 import com.robintegg.account.CustomerLocationService;
+import com.robintegg.account.HomeLocation;
 import com.robintegg.account.UnknownCustomerException;
-import com.robintegg.common.Location;
 import com.robintegg.sales.Catalogue;
 import com.robintegg.sales.CatalogueService;
+import com.robintegg.sales.SalesLocation;
 
 @Transactional
 @Service
@@ -27,10 +28,18 @@ public class ProductSelectionServiceImpl implements ProductSelectionService {
 	@Override
 	public Catalogue getAvailableProductsCatalogue(CustomerID customerID) throws UnknownCustomerException {
 
-		Location location = locationService.getLocationForCustomer(customerID);
-
+		HomeLocation homeLocation = locationService.getLocationForCustomer(customerID);
+		SalesLocation location = convertToSalesLocation(homeLocation);
 		return catalogueService.getCatalogueForLocation(location);
 
+	}
+
+	private SalesLocation convertToSalesLocation(HomeLocation homeLocation) {
+		SalesLocation location = null;
+		if(homeLocation!=null) {
+			location = new SalesLocation(homeLocation.getLocationID());
+		}
+		return location;
 	}
 
 }

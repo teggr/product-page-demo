@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.robintegg.common.Location;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class CustomerLocationServiceTest {
@@ -22,7 +20,7 @@ public class CustomerLocationServiceTest {
 	@Test
 	public void shouldGetCustomerHomeLocationWhereCustomerExists() throws UnknownCustomerException {
 
-		Location location = service.getLocationForCustomer(new CustomerID("robin"));
+		HomeLocation location = service.getLocationForCustomer(new CustomerID("robin"));
 
 		assertEquals("LONDON", location.getLocationID());
 
@@ -31,7 +29,7 @@ public class CustomerLocationServiceTest {
 	@Test
 	public void shouldReturnNoLocationWhereCustomerExistsButDoesNotHaveLocation() throws UnknownCustomerException {
 
-		Location location = service.getLocationForCustomer(new CustomerID("alex"));
+		HomeLocation location = service.getLocationForCustomer(new CustomerID("alex"));
 
 		assertNull(location);
 

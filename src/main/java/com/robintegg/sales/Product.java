@@ -4,8 +4,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.robintegg.common.Location;
-
 @Entity
 public class Product {
 
@@ -17,13 +15,13 @@ public class Product {
 	private Category category;
 
 	@Embedded
-	private Location location;
+	private SalesLocation location;
 
 	Product() {
 		// for JPA
 	}
 
-	public Product(String name, Category category, Location location) {
+	public Product(String name, Category category, SalesLocation location) {
 		this.productID = generateAProductID(name);
 		this.name = name;
 		this.category = category;
@@ -46,7 +44,7 @@ public class Product {
 		return category;
 	}
 
-	public Location getLocation() {
+	public SalesLocation getLocation() {
 		return location;
 	}
 
