@@ -5,9 +5,9 @@
 * Spring Boot for main Java application to provide web endpoints and data persistence
 * JQuery and Mustache to provide lightweight dynamic content to products page
 * Twitter Bootstrap for responsive grid and CSS framework
-* BDD application
+* JBehave and Selenium for BDD UI application testing
 
-## Registered Customers for customerID cookie values
+## Registered Customers for testing customerID cookie values
 
 * robin - LONDON
 * dan - LIVERPOOL
@@ -52,6 +52,14 @@ Refresh the page
 
 ## Testing results
 
+To run the JBehave BDD tests using maven (you will need chromedriver installed)
+
+	mvn -Pui-testing -Dmaven.webdriver.chrome.driver={install_path} clean verify
+
+The tests can also be run via IDE Junit execution 'UiStories.java'
+
 During the test phase, the BDD framework will have captured the acceptance criteria report. This will be available at:
 
 	{project_root}/target/jbehave/view/index.html
+	
+This will report all the UI interaction stories in `/src/test/resources/stories/product-page.story`
