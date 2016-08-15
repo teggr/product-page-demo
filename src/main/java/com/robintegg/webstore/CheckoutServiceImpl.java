@@ -2,10 +2,12 @@ package com.robintegg.webstore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.robintegg.account.CustomerID;
 import com.robintegg.sales.ProductRepository;
 
+@Transactional
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
 

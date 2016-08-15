@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.robintegg.common.Location;
 
+@Transactional
 @Service
 public class CatalogueServiceImpl implements CatalogueService {
 
