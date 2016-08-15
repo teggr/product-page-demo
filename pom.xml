@@ -22,6 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<jbehave.version>4.0.5</jbehave.version>
+		<maven.webdriver.chrome.driver>C:\\tools\\chromedriver_win32\\chromedriver.exe</maven.webdriver.chrome.driver>
 	</properties>
 
 	<dependencies>
@@ -64,27 +66,43 @@
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
-			<version>4.0.4</version>
+			<version>${jbehave.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-spring</artifactId>
-			<version>4.0.4</version>
+			<version>${jbehave.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-gherkin</artifactId>
-			<version>4.0.4</version>
+			<version>${jbehave.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- java web driver impl -->
+		<!-- for chrome driver -->
 		<dependency>
-			<groupId>com.machinepublishers</groupId>
-			<artifactId>jbrowserdriver</artifactId>
-			<version>0.16.4</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -93,11 +111,48 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*Stories.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
 
+	<profiles>
+
+		<profile>
+			<id>ui-testing</id>
+			<build>
+
+				<plugins>
+
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.18</version>
+						<configuration>
+							<includes>
+								<include>**/*Stories.java</include>
+							</includes>
+							<systemProperties>
+								<maven.webdriver.chrome.driver>${maven.webdriver.chrome.driver}</maven.webdriver.chrome.driver>
+							</systemProperties>
+						</configuration>
+					</plugin>
+
+
+				</plugins>
+
+			</build>
+		</profile>
+
+	</profiles>
 
 </project>

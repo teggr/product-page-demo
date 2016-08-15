@@ -21,17 +21,20 @@ import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@ActiveProfiles("ui-test")
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
-public class TestRunner extends JUnitStories {
+@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+public class UiStories extends JUnitStories {
 
 	@Autowired
 	private ApplicationContext applicationContext;
 
-	public TestRunner() {
+	public UiStories() {
 		initJBehaveConfiguration();
 	}
 
@@ -50,7 +53,6 @@ public class TestRunner extends JUnitStories {
 	}
 
 	@Override
-
 	public InjectableStepsFactory stepsFactory() {
 		return new SpringStepsFactory(configuration(), applicationContext);
 	}

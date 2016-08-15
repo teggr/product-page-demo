@@ -7,15 +7,15 @@ I want to choose them on the web page
 
 Scenario: Selecting products
 Given the customer is on the product page
-When the customer selects or unselects a product
-Then the basket is updated to show the selected products.
+When the customer selects a product
+Then the basket is updated to show the selected product
 
-Scenario: Checking out
-Given the customer is on the product page
-When the customer chooses to checkout
-Then the customer is taken to the confirmation page.
+Scenario: Unselecting products
+Given the customer is on the product page with a selected product
+When the customer unselects a product
+Then the basket is updated to be empty
 
 Scenario: Confirmation page
-Given the customer has a valid checkout
+Given the customer is on the product page with a selected product
 When the customer chooses to checkout
-Then the customer’s customerID and list of selected products are posted to the confirmation page.
+Then the customer’s customerID and list of selected products are posted to the confirmation page

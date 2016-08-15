@@ -45,6 +45,7 @@ public class ProductSelectionController {
 			model.addAttribute("form", new ProductSelectionForm());
 		}
 
+		model.addAttribute("customerID", cookie.getCustomerID().getCustomerID());
 		model.addAttribute("catalogue", productSelection.getAvailableProductsCatalogue(cookie.getCustomerID()));
 
 		return "productselection";
@@ -68,6 +69,7 @@ public class ProductSelectionController {
 			checkout.startCheckout(checkoutBasket);
 			return "redirect:/confirmation";
 		} catch (Exception e) {
+			model.addAttribute("customerID", cookie.getCustomerID().getCustomerID());
 			model.addAttribute("catalogue", productSelection.getAvailableProductsCatalogue(cookie.getCustomerID()));
 			return "productselection";
 		}

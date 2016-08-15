@@ -8,6 +8,18 @@
 	<div class="container">
 
 		<th:block th:replace="header::standard"></th:block>
+		
+		<div class="row">
+		
+			<div class="col-md-12">
+			
+				<h1 class="welcome" th:text="#{product.selection.intro(${customerID})}"></h1>
+				
+				<p class="lead" th:text="#{product.selection.lead}"></p>
+			
+			</div>
+		
+		</div>
 
 		<div class="row">
 

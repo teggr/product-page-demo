@@ -14,14 +14,14 @@
 	</div>
 	
 	<div th:fragment="confirm (product)">
-		<div th:inline="text"> 
+		<div class="confirm-product" th:inline="text"> 
 			[[${product.name}]]
 		</div>
 	</div>
 	
 	<div th:fragment="basket-template">
 		<script id="product-basket-template" type="x-tmpl-mustache">
-			<li data-productid="{{productid}}">{{name}}</li>
+			<li class="basket-product" data-productid="{{productid}}">{{name}}</li>
 		</script>
 	</div>
 	
